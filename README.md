@@ -13,7 +13,7 @@ I have a lot of hypotheses I can and want to test, and I will test that at diffe
 This is important because it allows me to always have something new to find and show as different assignments are given instead of just rewriting the same find repeateadly.
 
 ## Markdown Link
-This is the Rpubs link created when I published my R markdown document [Link to Rpubs](http://rpubs.com/Tecnikle/1340228)
+[Link to Rpubs published markdown](http://rpubs.com/Tecnikle/1340228)
 
 ## JSON link
 [Link to JSON for video game sales](https://tecnikle.github.io/Adv-Data-Video-Game-Sales-Analysis/vgsales.json)

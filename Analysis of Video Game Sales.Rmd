@@ -1,0 +1,109 @@
+---
+title: "Analysis of Video Game Sales"
+author: "BF"
+output: html_document
+date: "2025-08-26"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+```
+
+## Question One
+The graph shows the number of sales(in millions) per year.
+```{r question one, warning = FALSE}
+#load CSV
+mydata <- read.csv('vgsales.csv')
+
+#Do my basic Data aggregating
+sales <- aggregate(mydata$Global_Sales ~ mydata$Year, data = mydata, sum)
+names(sales) <- c('Year', 'Sales')
+
+#plotting
+plot(sales$Year, sales$Sales, 
+     type = 'l', 
+     xlab = 'Year', 
+     ylab = 'Sales', 
+     main = 'Sales Per Year')
+```
+
+## Question Two
+One of my hypotheses was that North America typically buys more video games than any other region, whether due to population or just general consumer tastes. The results of my data support this hypothesis since for most years North America has a higher average quantity purchase amount.
+```{r question two, warning = FALSE}
+#Set up data for the different regions
+NaSales <- aggregate(mydata$NA_Sales ~ mydata$Year, data = mydata, mean)
+names(NaSales) <- c('Year', 'NASales')
+EuSales <- aggregate(mydata$EU_Sales ~ mydata$Year, data = mydata, mean)
+names(EuSales) <- c('Year', 'EUSales')
+JpSales <- aggregate(mydata$JP_Sales ~ mydata$Year, data = mydata, mean)
+names(JpSales) <- c('Year', 'JPSales')
+
+#plotting
+plot(NaSales$Year, NaSales$NASales, 
+     col = 'blue',
+     type = 'l', 
+     xlab = 'Year', 
+     ylab = 'Average Sales', 
+     main = 'Average Sales per Region per Year')
+lines(EuSales$Year, EuSales$EUSales, 
+      col = 'green', 
+      type = 'l')
+lines(JpSales$Year, JpSales$JPSales, 
+      col = 'red', 
+      type = 'l')
+legend("topright", 
+       legend = c("Na", "EU", "JP"), 
+       col = c("blue", "green", "red"), 
+       lty = c(1, 2, 3))
+```
+
+## Question Three
+One of my other hypotheses was that video game sales are trending upward, as in more sales are happening every year. What I learned from question one was that this data set does not have a lot of representation of video games released after about 2010. Therefore I filtered the data down to just games released prior to 2010 and then did my correlation testing on that. What I found was that there is very likely a positive correlation between year and sales, meaning my hypothesis is probably true.
+```{r question three, warning = FALSE}
+#Filtering data based on first question
+filtered_data <- mydata[mydata$Year <= 2010, ]
+
+#was getting non-numeric error so fixing
+filtered_data$Year <- as.numeric(as.character(filtered_data$Year))
+filtered_data$Global_Sales <- as.numeric(as.character(filtered_data$Global_Sales))
+
+#aggregating the data
+filtered_sales <- aggregate(filtered_data$Global_Sales ~ filtered_data$Year, data = mydata, sum)
+names(filtered_sales) <- c('Year', 'Sales')
+
+
+#Correlation testing
+correlation <- cor.test(filtered_sales$Year, filtered_sales$Sales)
+print(correlation)
+
+#creating linear model to get direction of correlation
+LinearModel <- lm(filtered_sales$Sales ~ filtered_sales$Year, data = mydata)
+summary(LinearModel)
+```
+
+## Question Four
+This counts the number of games released every 5 years starting from 1980. As you can see there is extremely low representation post 2010 which supports my decision to filter out games post 2010 in the previous question.
+```{r question four, warning = FALSE}
+#non-numeric error
+mydata$Year <- as.numeric(as.character(mydata$Year))
+
+#plotting
+hist(mydata$Year, 
+     breaks = 8,
+     xlab = 'Year',
+     ylab = 'Count',
+     main = 'Number of games released per 5 years')
+```
+
+## Question Five
+I will be using the sales data per region that I found in question two. As you can see in the p value result, there is a statisically significant difference between the sales in North America and the sales in EU, meaning that my hypothesis is supported by the t-test.
+```{r question five, warning = FALSE}
+#Getting non-numeric error again
+NaSales$NASales <- as.numeric(as.character(NaSales$NASales))
+EuSales$EUSales <- as.numeric(as.character(EuSales$EUSales))
+
+#running t-test
+t_test_results <- t.test(NaSales$NASales, y = EuSales$EUSales)
+print(t_test_results)
+```

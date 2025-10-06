@@ -18,3 +18,6 @@ This is important because it allows me to always have something new to find and 
 
 ## JSON link
 [Link to JSON for video game sales](https://tecnikle.github.io/Adv-Data-Video-Game-Sales-Analysis/vgsales.json)
+
+## TableAU Link
+[Link to TableAU interactive dashboard](https://public.tableau.com/app/profile/brandon.faulkenberry/viz/VGsalesDashboard/Sheet1?publish=yes)

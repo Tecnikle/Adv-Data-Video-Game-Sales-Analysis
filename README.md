@@ -22,3 +22,7 @@ This is important because it allows me to always have something new to find and 
 ## TableAU Link
 [Link to first TableAU interactive dashboard](https://public.tableau.com/app/profile/brandon.faulkenberry/viz/VGsalesDashboard/Sheet1?publish=yes)  
 [Link to Second TableAU interactive dashboard](https://public.tableau.com/app/profile/brandon.faulkenberry/viz/VGsalesDashboard/Sheet2?publish=yes)
+
+## JavaScript testing
+[Link to test page](https://codepen.io/Tecnikle/pen/RNrVjpd)  
+[Link to javascript using my data]()

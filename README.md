@@ -26,3 +26,6 @@ This is important because it allows me to always have something new to find and 
 ## JavaScript testing
 [Link to test page](https://codepen.io/Tecnikle/pen/RNrVjpd)  
 [Link to javascript using my data](https://codepen.io/Tecnikle/pen/ByjRmRa)
+
+## Google Colab notebook
+[Link to notebook](https://colab.research.google.com/drive/1LpWdOyaq5g5tmTgxYnW_nlzrch0WLldJ?usp=sharing)

@@ -1,6 +1,7 @@
 # Adv-Data-Video-Game-Sales-Analysis
 ## Main Description
 This is a repository to store all of the information and progress I make with my analysis project for my Advanced Data Analytics course.
+[Link to Repository](https://github.com/Tecnikle/Adv-Data-Video-Game-Sales-Analysis)
 
 ## Data Set and why I chose it
 [Link to dataset](https://www.kaggle.com/datasets/archissave/video-game-sales?resource=download)   
